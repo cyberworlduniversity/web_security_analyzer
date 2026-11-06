@@ -1,5 +1,15 @@
 # 🔒 Web Security Header Analyzer
 
+
+## Get this repository
+
+Clone the current project (this repository's canonical GitHub URL), then follow the installation and usage steps below.
+
+```bash
+git clone https://github.com/cyberworlduniversity/web_security_analyzer.git
+cd web_security_analyzer
+```
+
 A Python-based command-line tool that scans any website and checks whether critical HTTP security headers are properly configured. It generates a security score, grade, and detailed recommendations.
 
 ---
