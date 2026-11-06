@@ -175,3 +175,53 @@ MIT License — Free to use, modify, and distribute.
 
 **hemanathan115**  
 Web Security Header Analyzer v1.0
+
+
+## Repository Quick Start
+
+Clone the canonical repository:
+
+```bash
+git clone https://github.com/cyberworlduniversity/web_security_analyzer.git
+cd web_security_analyzer
+```
+
+### Requirements and installation
+
+- Install Python 3.10+ and pip.
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+### Build / run
+
+```bash
+analyzer.py
+```
+
+```bash
+python analyzer.py
+```
+
+### Validation
+
+```bash
+python -m compileall -q .
+```
+
+Only scan websites you own or are explicitly authorized to assess.
+
+### Program flow
+
+```mermaid
+flowchart TD
+    A[Start] --> B[Initialize application]
+    B --> C[Select interface or input]
+    C --> D{Ready to process?}
+    D -- No --> E[Report setup or input issue]
+    D -- Yes --> F[Run web security analyzer operation]
+    F --> G[Summarize findings]
+    G --> H[Display results and exit]
+    E --> H
+```
