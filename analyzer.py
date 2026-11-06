@@ -71,15 +71,10 @@ def fetch_headers(url: str) -> dict | None:
         )
         return dict(response.headers), response.status_code, response.url
     except requests.exceptions.SSLError:
-        print(f"  [!] SSL Error — trying HTTP fallback...")
-        try:
-            http_url = url.replace("https://", "http://")
-            response = requests.get(http_url, timeout=10, allow_redirects=True,
-                                    headers={"User-Agent": "WebSecurityAnalyzer/1.0"})
-            return dict(response.headers), response.status_code, response.url
-        except Exception as e:
-            print(f"  [!] HTTP fallback also failed: {e}")
-            return None, None, None
+        # Never downgrade a failed HTTPS check to plaintext HTTP. Doing so can
+        # hide certificate problems and produce a misleading security report.
+        print("  [!] TLS verification failed — refusing an insecure HTTP fallback.")
+        return None, None, None
     except requests.exceptions.ConnectionError:
         print(f"  [!] Connection error — cannot reach {url}")
         return None, None, None
